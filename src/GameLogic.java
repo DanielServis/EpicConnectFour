@@ -18,7 +18,7 @@ public class GameLogic {
 
         while(playing)
         {
-            plays(plays);
+            plays();
         }
     }
 
