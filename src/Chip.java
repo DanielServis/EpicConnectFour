@@ -35,8 +35,16 @@ public class Chip {
             return false;
     }
 
-    public String[] printChip()
+    public String[] getChip()
     {
         return iomha;
+    }
+
+    public void printChip()
+    {
+        for (int i = 0; i < iomha.length; i++)
+        {
+            System.out.println(iomha[i]);
+        }
     }
 }
