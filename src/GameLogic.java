@@ -22,12 +22,10 @@ public class GameLogic {
         }
     }
 
-    public int plays(int plays)
+    public int plays()
     {
-
         int col = turn(plays%2);
         return plays%2 + 1;
-
     }
 
     public int turn(int player)
