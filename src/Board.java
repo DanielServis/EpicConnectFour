@@ -1,28 +1,29 @@
-import java.util.Arrays;
-
 public class Board {
-    private final int ROWS = 6;
-    private final int COLS = 7;
-    private char[][] grid;
+    private final int ROWS = Consts.HEIGHT;
+    private final int COLS = Consts.WIDTH;
+    private Chip[][] grid;
 
     public Board() {
-        grid = new char[ROWS][COLS];
+        grid = new Chip[ROWS][COLS];
         for (int r = 0; r < ROWS; r++) {
             for (int c = 0; c < COLS; c++) {
-                grid[r][c] = '*';
+                grid[r][c] = null;
             }
         }
     }
 
+    public Chip[][] getGrid() {
+        return this.grid;
+    }
+
     public void printBoard() {
-        for (char[] row : grid) {
-            for (char cell : row) {
+        for (Chip[] row : grid) {
+            for (Chip cell : row) {
                 System.out.print(cell + " ");
             }
             System.out.println();
         }
         System.out.println("0 1 2 3 4 5 6");
     }
-
 }
 
