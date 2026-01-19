@@ -1,8 +1,6 @@
 import java.util.Arrays;
 
 public class Board {
-    GameLogic GL = new GameLogic();
-
     private final int ROWS = 6;
     private final int COLS = 7;
     private char[][] grid;
@@ -24,18 +22,6 @@ public class Board {
             System.out.println();
         }
         System.out.println("0 1 2 3 4 5 6");
-    }
-
-    public void chipPlace(){
-        int Column;
-        Column = GL.getCol();
-
-        for(int i =0; i<6; i++){
-            if(grid[i][Column] == '*'){
-                //GL.plays()
-            }
-        }
-
     }
 
 }
