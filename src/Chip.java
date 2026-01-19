@@ -42,9 +42,9 @@ public class Chip {
 
     public void printChip()
     {
-        for (int i = 0; i < iomha.length; i++)
+        for (String row : iomha)
         {
-            System.out.println(iomha[i]);
+            System.out.println(row);
         }
     }
 }
