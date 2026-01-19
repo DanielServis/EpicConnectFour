@@ -4,6 +4,7 @@ public class GameLogic {
     String player1;
     String player2;
     int plays = 0;
+    boolean playing = true;
 
     Scanner sc = new Scanner(System.in);
 
@@ -13,9 +14,14 @@ public class GameLogic {
 
         System.out.println("Enter Player 2 name");
         player2 = sc.nextLine();
+
+        while(playing)
+        {
+            turn(plays);
+        }
     }
 
-    public void turn()
+    public void turn(int plays)
     {
         while(plays%2==0)
         {
