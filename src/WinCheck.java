@@ -15,44 +15,86 @@ public class WinCheck {
       }
     }
     boolean isRed = grid[lastMoveRow][lastMoveCol].getRed();
-
-    int length;
-    // check for fours in each direction: down, sides, diagonals
+    // check for fours in each direction: down, sides, diagonal + and -
     // down
-    length = 1;
-    for (int i = 1; i < 4; i++) {
-      if (grid[lastMoveRow + i][lastMoveCol].getRed() == isRed) {
-        length += 1;
+    int length = 1;
+    for (int i = 1; i < 4 && lastMoveRow + i < Consts.HEIGHT; i++) {
+      Chip chip = grid[lastMoveRow + i][lastMoveCol];
+      if (chip != null && chip.getRed() == isRed) {
+        length++;
       } else {
         break;
       }
     }
-    if (length == 4) {
+    if (length >= 4) {
       return isRed ? 1 : 2;
     }
 
     // sides
     length = 1;
-    for (int i = 0; i < 4; i++) {
-      if (grid[lastMoveRow][lastMoveCol + i ].getRed() == isRed) {
-        length += 1;
+    for (int i = 1; i < 4 && lastMoveCol + i < Consts.WIDTH; i++) {
+      Chip chip = grid[lastMoveRow][lastMoveCol + i ];
+      if (chip != null && chip.getRed() == isRed) {
+        length++;
       } else {
         break;
       }
     }
-    for (int i = 0; i < 4; i++) {
-      if (grid[lastMoveRow][lastMoveCol - i ].getRed() == isRed) {
-        length += 1;
+    for (int i = 1; i < 4 && lastMoveCol - i >= 0; i++) {
+      Chip chip = grid[lastMoveRow][lastMoveCol - i ];
+      if (chip != null && chip.getRed() == isRed) {
+        length++;
       } else {
         break;
       }
     }
-    if (length == 4) {
+    if (length >= 4) {
       return isRed ? 1 : 2;
     }
 
-    // diagonal 1
+    // diagonal +
     length = 1;
+    for (int i = 1; i < 4 && lastMoveRow - i >= 0 && lastMoveCol + i < Consts.WIDTH; i++) {
+      Chip chip = grid[lastMoveRow - i][lastMoveCol + i];
+      if (chip != null && chip.getRed() == isRed) {
+        length++;
+      } else {
+        break;
+      }
+    }
+    for (int i = 1; i < 4 && lastMoveRow + i < Consts.HEIGHT && lastMoveCol - i >= 0; i++) {
+      Chip chip = grid[lastMoveRow + i][lastMoveCol - i];
+      if (chip != null && chip.getRed() == isRed) {
+        length++;
+      } else {
+        break;
+      }
+    }
+    if (length >= 4) {
+      return isRed ? 1 : 2;
+    }
+
+    // diagonal -
+    length = 1;
+    for (int i = 1; i < 4 && lastMoveRow + i < Consts.HEIGHT && lastMoveCol + i < Consts.WIDTH; i++) {
+      Chip chip = grid[lastMoveRow + i][lastMoveCol + i];
+      if (chip != null && chip.getRed() == isRed) {
+        length++;
+      } else {
+        break;
+      }
+    }
+    for (int i = 1; i < 4 && lastMoveRow - i >= 0 && lastMoveCol - i >= 0; i++) {
+      Chip chip = grid[lastMoveRow - i][lastMoveCol - i];
+      if (chip != null && chip.getRed() == isRed) {
+        length++;
+      } else {
+        break;
+      }
+    }
+    if (length >= 4) {
+      return isRed ? 1 : 2;
+    }
 
     // check if board is full
     boolean full = true;
