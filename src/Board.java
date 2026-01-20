@@ -38,5 +38,9 @@ public class Board {
         }
 
     }
+
+    public Chip[][] getGrid() {
+        return new Chip[0][];
+    }
 }
 
